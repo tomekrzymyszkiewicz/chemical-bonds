@@ -38,17 +38,19 @@ def main():
         for first_iterator, first_atom in enumerate(list_of_atoms, start=1):
             for second_iterator, second_atom in enumerate(list_of_atoms, start=1):
                 if first_iterator < second_iterator:
-                    d = math.sqrt(pow((first_atom[1]-second_atom[1]),2)+pow((first_atom[2]-second_atom[2]),2)+pow((first_atom[3]-second_atom[3]),2))
+                    d = math.sqrt(pow((first_atom[1]-second_atom[1]), 2)+pow(
+                        (first_atom[2]-second_atom[2]), 2)+pow((first_atom[3]-second_atom[3]), 2))
                     if d != 0:
                         for bond in typical_bonds_lengths:
                             if abs(d-bond[2]) <= 0.12 and (first_atom[0] == bond[0] or first_atom[0] == bond[1]) and (second_atom[0] == bond[0] or second_atom[0] == bond[1]):
-                                output_bonds.append([first_iterator,second_iterator])
+                                output_bonds.append(
+                                    [first_iterator, second_iterator])
                                 break
-                                
+
         with open("bonds-"+inp_file_name[0:-4]+".out", "w") as bonds_file:
             for bond in output_bonds:
-                bonds_file.write("".join([str(bond[0])+" : "+str(bond[1])])+"\n")
-
+                bonds_file.write(
+                    "".join([str(bond[0])+" : "+str(bond[1])])+"\n")
 
 
 if __name__ == "__main__":
